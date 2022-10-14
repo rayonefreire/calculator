@@ -25,6 +25,12 @@ export function Keyboard(){
     setOperation(buttonValue);
     setSecondNumber(firstNumber);
     setFirstNumber("");
+    
+    if (result !== null) {
+      setSecondNumber(result);
+      setOperation(buttonValue);
+      setFirstNumber("");
+    }
   }
 
   function clear() {
