@@ -14,7 +14,10 @@ export function Keyboard(){
   const [operation, setOperation] = useState("");
   const [result, setResult] = useState(Number || null);
 
+  const [styleColor, setStyleColor] = useState(false);
+
   function handlePressNumber(buttonValue: string) {
+    setStyleColor(false);
     setFirstNumber(firstNumber + buttonValue);
   }
 
@@ -39,7 +42,7 @@ export function Keyboard(){
       case "-":
         setResult(parseInt(secondNumber) - parseInt(firstNumber));
         break;
-      case "*":
+      case "x":
         setResult(parseInt(secondNumber) * parseInt(firstNumber));
         break;
       case "/":
@@ -55,8 +58,12 @@ export function Keyboard(){
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.number}>{firstNumber}</Text>
-        <Text style={styles.number}>{result}</Text>
+        <Text style={styles.number}>{ result !== null ? '' : `${secondNumber} ${operation}`}</Text>
+        <Text style={
+          result !== null ? [styles.result, { color: 'green' }] : styles.result
+        }>
+          { result !== null ? result : firstNumber }
+        </Text>
       </View>
 
       <View style={styles.keyboard}>
@@ -156,16 +163,16 @@ export function Keyboard(){
           <TouchableOpacity
             activeOpacity={0.7}
             style={styles.buttonOperation}
-            onPress={() => handleOperationPress("*")}
+            onPress={() => handleOperationPress("x")}
           >
-            <Text style={styles.title}>*</Text>
+            <Text style={styles.title}>x</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.fileira}>
           <TouchableOpacity
             activeOpacity={0.7}
-            style={styles.buttonZero}
+            style={styles.button}
             onPress={() => handlePressNumber("0")}
           >
             <Text style={styles.title}>0</Text>
@@ -173,10 +180,10 @@ export function Keyboard(){
 
           <TouchableOpacity
             activeOpacity={0.7}
-            style={styles.buttonZero}
+            style={styles.buttonOperation}
             onPress={clear}
           >
-            <Text style={styles.title}>Limpar</Text>
+            <Text style={styles.title}>AC</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

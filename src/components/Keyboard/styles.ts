@@ -29,33 +29,24 @@ export const styles = StyleSheet.create({
     margin: 8,
   },
   title: {
-    fontSize: 24,
+    fontSize: 34,
     color: 'white',
   },
   buttonOperation: {
     height: 80,
     width: 80,
     borderRadius: 40,
-    backgroundColor: 'orange',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 8,
-  },
-  buttonZero: {
-    height: 80,
-    width: 80,
-    borderRadius: 40,
     backgroundColor: 'orange',
-    justifyContent: 'center',
-    alignItems: 'center',
     margin: 8,
   },
   number: {
     fontSize: 40,
+    color: 'purple',
+  },
+  result: {
+    fontSize: 80,
     color: 'white',
   },
-  operation: {
-    fontSize: 60,
-    color: 'purple'
-  }
 });
